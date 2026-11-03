@@ -1,0 +1,63 @@
+{
+  "name": "selfhealnet-frontend",
+  "private": true,
+  "version": "0.1.0",
+  "main": "desktop/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "desktop:dev": "npm run build && electron .",
+    "desktop:dist": "npm run build && electron-builder --win nsis"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "electron": "^37.2.6",
+    "electron-builder": "^26.0.12",
+    "vite": "^5.4.10"
+  },
+  "build": {
+    "appId": "com.selfhealnet.desktop",
+    "productName": "SelfHealNet",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "desktop/**/*",
+      "dist/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../backend",
+        "to": "app-runtime/backend",
+        "filter": ["**/*", "!**/__pycache__/**", "!**/*.pyc"]
+      },
+      {
+        "from": "../ml",
+        "to": "app-runtime/ml",
+        "filter": ["**/*", "!**/__pycache__/**", "!**/*.pyc", "!**/*backup*"]
+      },
+      {
+        "from": "../sdn_controller",
+        "to": "app-runtime/sdn_controller",
+        "filter": ["**/*", "!**/__pycache__/**", "!**/*.pyc"]
+      }
+    ],
+    "win": {
+      "target": ["nsis"],
+      "artifactName": "SelfHealNet-Setup-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "SelfHealNet"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+# SelfHealNet Backend Dependencies - Phase 2 (ML Implementation)
+# Optimized for development without external database/cache dependencies
+
+# Web Framework
+fastapi==0.104.1
+uvicorn==0.24.0
+pydantic==2.5.0
+python-multipart==0.0.6
+
+# Database (SQLite for development, PostgreSQL optional for production)
+sqlalchemy==2.0.23
+alembic==1.12.1
+# psycopg2-binary==2.9.9  # Uncomment for PostgreSQL
+
+# Machine Learning & Data Science (Phase 2 Focus)
+scikit-learn==1.3.2
+pandas==2.1.3
+numpy==1.26.2
+shap==0.43.0
+joblib==1.3.2
+
+# Database / SDN stack
+pymysql==1.1.1
+ryu==4.34
+
+# Testing
+pytest==7.4.3
+pytest-cov==4.1.0
+pytest-asyncio==0.21.1
+httpx==0.25.2
+
+# Logging & Monitoring
+python-json-logger==2.0.7
+structlog==23.3.0
+
+# Utilities
+python-dotenv==1.0.0
+requests==2.31.0
+pyyaml==6.0.1
+
+# Optional (Phase 3+)
+# prometheus-client==0.19.0  # Uncomment for metrics
+# redis==5.0.0              # Uncomment for caching
+# celery==5.3.4             # Uncomment for async tasks
+
+# Optional (Phase 4+)
+# mininet==2.3.0d6          # Linux-only, for Phase 4 network simulation
